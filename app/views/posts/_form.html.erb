@@ -54,9 +54,18 @@
       handler.fitMapToBounds();
       handler.getMap().setCenter(latlng);
       handler.getMap().setZoom(13);
+      var marker = null;
 
       google.maps.event.addListener(handler.getMap(), 'click', function(event) {
-
+        if(marker != null) {
+          marker.setMap(null);
+        }
+        marker = new google.maps.Marker({
+          position: event.latLng,
+          map: handler.getMap()
+        });
+        $('#post_latitude').val(event.latLng.lat());
+        $('#post_longitude').val(event.latLng.lng());
       });
     });
 </script>

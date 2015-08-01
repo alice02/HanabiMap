@@ -25,6 +25,7 @@
   </div>
 
   <div class="field">
+    <%= f.label :photo %><br>
     <%= f.file_field :photo %>
   </div>
 
@@ -36,7 +37,26 @@
     <%= f.label :longitude %><br>
     <%= f.text_field :longitude %>
   </div>
+
+  <div style='width: 800px;'>
+   <div id="map" style='width: 800px; height: 400px;'></div>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      latlng = new google.maps.LatLng(35.3759697,139.9169651);
+      handler.fitMapToBounds();
+      handler.getMap().setCenter(latlng);
+      handler.getMap().setZoom(13);
+
+      google.maps.event.addListener(handler.getMap(), 'click', function(event) {
+
+      });
+    });
+</script>

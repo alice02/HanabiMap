@@ -6,8 +6,8 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
-      marker.lat 0
-      marker.lng 0
+      marker.lat post.latitude
+      marker.lng post.longitude
       marker.infowindow "hoge"
       marker.json({title: "aaa"})
     end

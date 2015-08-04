@@ -29,15 +29,9 @@
     <%= f.file_field :photo %>
   </div>
 
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude, disabled: true %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude, disabled: true %>
-  </div>
-
+  <%= f.hidden_field :latitude %>
+  <%= f.hidden_field :longitude %>
+  
   <div style='width: 800px;'>
    <div id="map" style='width: 800px; height: 400px;'></div>
   </div>

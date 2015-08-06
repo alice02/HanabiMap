@@ -6,10 +6,9 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
-      url = post.photo.url(:medium)
       marker.lat post.latitude
       marker.lng post.longitude
-      marker.infowindow "<strong>Picture:</strong>" + "<img src=\"" + url + "\">"
+      marker.infowindow "<strong>Picture:</strong>" + "<img src=\"" + post.photo.url(:medium) + "\">"
     end
   end
 

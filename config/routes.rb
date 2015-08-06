@@ -6,6 +6,9 @@ Rails.application.routes.draw do
       resources :posts, only: [:index, :create]
     end
   end
+
+  post 'check_exif', to: 'api/v1/posts#check_exif', path: "/api/v1/checkexif"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

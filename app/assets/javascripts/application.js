@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require underscore-min
 //= require gmaps/google
+//= require exif
 //= require_tree .

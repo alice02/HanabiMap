@@ -15,11 +15,6 @@ class Api::V1::PostsController < ApplicationController
 		end
 	end
 
-	def check_exif
-		render status: 200, json: Post.all
-	end
-
-
 	private
 		def post_params
 			params.require(:post).permit(:name, :comment, :date, :latitude, :longitude, :photo)

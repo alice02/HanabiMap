@@ -43,7 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'paperclip'
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'gmaps4rails'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
+gem 'exifr'

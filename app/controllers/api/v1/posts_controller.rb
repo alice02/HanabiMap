@@ -3,7 +3,8 @@ class Api::V1::PostsController < ApplicationController
  	protect_from_forgery :except => [:create]
 
 	def index
-		render status: 200, json: Post.all
+		@posts = Post.all
+		render "index", :formats => [:json], :handlers => [:jbuilder]
 	end
 
 	def create

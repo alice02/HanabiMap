@@ -20,24 +20,18 @@
     <%= f.text_area :comment %>
   </div>
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
-  </div>
-
-  <div class="field">
     <%= f.label :photo %><br>
     <%= f.file_field :photo %>
   </div>
-
-  <%= f.hidden_field :latitude %>
-  <%= f.hidden_field :longitude %>
-  
-  <div style='width: 800px;'>
-   <div id="map" style='width: 800px; height: 400px;'></div>
+  <div class="field">
+    <%= f.label :latitude, "撮影場所" %> <br>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>  
+    <div id="map" style='width: 800px; height: 400px;'></div>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "投稿", class: "btn btn-primary" %>
   </div>
 <% end %>
 
@@ -62,4 +56,27 @@
         $('#post_longitude').val(event.latLng.lng());
       });
     });
+</script>
+
+<script type="text/javascript">
+  $('#post_photo').change(function() {
+    var file = this.files[0];  // file
+    fr   = new FileReader; // to read file contents
+
+    fr.onloadend = function() {
+      // get EXIF data
+      image = new Image();
+      image.src = fr.result
+      EXIF.getData(image, function() {
+                            var lat = EXIF.getTag(this, "Orientation");
+      alert(lat);
+                        });    };
+                  var toDecimal = function (number) {
+       return number[0].numerator + number[1].numerator /
+           (60 * number[1].denominator) + number[2].numerator / (3600 * number[2].denominator);
+   };
+
+
+    fr.readAsDataURL(file); // read the file
+  });
 </script>

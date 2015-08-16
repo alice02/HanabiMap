@@ -1,42 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Comment</th>
-      <th>Date</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.name %></td>
-        <td><%= post.comment %></td>
-        <td><%= post.date %></td>
-        <td><%= post.latitude %></td>
-        <td><%= post.longitude %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to '投稿する', new_post_path, class: "btn btn-primary" %>
 
+<br>
+<hr>
 
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+<div style='width: 100%;'>
+  <div id="map" style='width: 100%; height: 700px;'></div>
 </div>
 
 <script type="text/javascript">
